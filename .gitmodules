@@ -1,0 +1,6 @@
+[submodule "third_party/ESP32_Installation"]
+	path = third_party/ESP32_Installation
+	url = https://github.com/jminjares4/ESP32_Installation
+[submodule "third_party/doxygen-awesome-css"]
+	path = third_party/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css
