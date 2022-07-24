@@ -4,7 +4,6 @@ Date:   07-24-2022
 GitHub: https://github.com/jminjares4
 Brief:  Read serial data with script to avoid using any additional software: 'putty' | 'screen'
 """
-from dataclasses import field
 import click
 import serial
 import time
