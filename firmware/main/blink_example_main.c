@@ -23,6 +23,7 @@ void task_one(void *vparameter){
       vTaskDelay(1000 / portTICK_PERIOD_MS);
       gpio_set_level(ONBOARD_LED, 1);
       vTaskDelay(1000 / portTICK_PERIOD_MS);
+      esp_rom_printf("Jesus Minjares\n");
    }
 
 }
@@ -35,6 +36,7 @@ void task_two(void *vparameter){
       vTaskDelay(500 / portTICK_PERIOD_MS);
       gpio_set_level(EXTERNAL_LED, 1);
       vTaskDelay(500 / portTICK_PERIOD_MS);
+      esp_rom_printf("Jorge Minjares\n");
    }
 
 }
