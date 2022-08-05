@@ -10,11 +10,13 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
+#include "inc/led.h"
+
 
 #define ONBOARD_LED  2
 #define EXTERNAL_LED 4
 
-void task_one(void *vparameter){
+void task_one(void *pvParameters){
    esp_rom_gpio_pad_select_gpio(ONBOARD_LED);
    gpio_set_direction(ONBOARD_LED, GPIO_MODE_OUTPUT);
 
@@ -27,7 +29,7 @@ void task_one(void *vparameter){
    }
 
 }
-void task_two(void *vparameter){
+void task_two(void *pvParameters){
    esp_rom_gpio_pad_select_gpio(EXTERNAL_LED);
    gpio_set_direction(EXTERNAL_LED, GPIO_MODE_OUTPUT);
 
@@ -41,9 +43,28 @@ void task_two(void *vparameter){
 
 }
 
+
+void ledTask( void *pvParameters){
+   led_t led = {.state = OFF, .pin = 16};
+
+   led_enable(&led);
+
+   while(1){
+      led_toggle(&led);
+      if(led.state){
+         printf("LED is on!\n");
+      }else{
+         printf("LED is off...\n");
+      }
+      vTaskDelay( 1000 / portTICK_PERIOD_MS);
+   }
+
+}
+
 void app_main(void)
 {
    xTaskCreate(&task_one, "task 1",  1024, NULL, tskIDLE_PRIORITY, NULL);  
    xTaskCreate(&task_two, "task 2",  1024, NULL, tskIDLE_PRIORITY, NULL);
+   xTaskCreate(&ledTask, "LED task", 1024, NULL, tskIDLE_PRIORITY, NULL);
 
 }
