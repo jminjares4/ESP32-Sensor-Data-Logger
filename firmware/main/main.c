@@ -11,6 +11,7 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 #include "inc/led.h"
+#include "inc/button.h"
 
 
 #define ONBOARD_LED  2
@@ -61,10 +62,39 @@ void ledTask( void *pvParameters){
 
 }
 
+void buttonTask( void *pvParameters){
+   /* Set button configuration */
+   button_t button;
+   button.pin = 23;
+   button.pull_sel.up = 1;
+   button.func = NULL;
+   /* Initialize button */
+   button_enable(&button);
+
+   /* Set led configuration */
+   led_t extraLed; 
+   extraLed.pin = 22;
+   extraLed.state = OFF;
+   /* Initialize led */
+   led_enable(&extraLed);
+
+   while(1){
+      /* Debounce button */
+      vTaskDelay(10 / portTICK_PERIOD_MS);
+      /* Check if button is pressed 
+         True:    led on
+         False:   led off
+      */
+      !read_button(&button) ? led_on(&extraLed) : led_off(&extraLed);
+      vTaskDelay(100 / portTICK_PERIOD_MS); /* 100 ms delay*/
+   }
+   
+}
+
 void app_main(void)
 {
    xTaskCreate(&task_one, "task 1",  1024, NULL, tskIDLE_PRIORITY, NULL);  
    xTaskCreate(&task_two, "task 2",  1024, NULL, tskIDLE_PRIORITY, NULL);
    xTaskCreate(&ledTask, "LED task", 1024, NULL, tskIDLE_PRIORITY, NULL);
-
+   xTaskCreate(&buttonTask, "Button task", 1024, NULL, tskIDLE_PRIORITY, NULL);
 }
