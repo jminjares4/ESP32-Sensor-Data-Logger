@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-#include "driver/inc/button.h"
-#include "driver/inc/led.h"
 
+#include "devices/button.h"
+#include "devices/led.h"
+
+#include "esp_log.h"
 
 #define ONBOARD_LED  2
 #define EXTERNAL_LED 4
@@ -18,7 +21,7 @@ void task_one(void *pvParameters){
       vTaskDelay(1000 / portTICK_PERIOD_MS);
       gpio_set_level(ONBOARD_LED, 1);
       vTaskDelay(1000 / portTICK_PERIOD_MS);
-      esp_rom_printf("Jesus Minjares\n");
+      esp_rom_printf("Task 1\n");
    }
 
 }
@@ -31,25 +34,27 @@ void task_two(void *pvParameters){
       vTaskDelay(500 / portTICK_PERIOD_MS);
       gpio_set_level(EXTERNAL_LED, 1);
       vTaskDelay(500 / portTICK_PERIOD_MS);
-      esp_rom_printf("Jorge Minjares\n");
+      esp_rom_printf("Task 2\n");
    }
 
 }
 
 
 void ledTask( void *pvParameters){
-   led_t led = {.state = OFF, .pin = 16};
+   led_t led = { .pin = 16, .state = OFF };
 
    led_enable(&led);
 
+   led_off(&led);
+
    while(1){
       led_toggle(&led);
-      if(led.state){
-         printf("LED is on!\n");
-      }else{
-         printf("LED is off...\n");
-      }
-      vTaskDelay( 1000 / portTICK_PERIOD_MS);
+      // if(led.state){
+      //    printf("LED is on!\n");
+      // }else{
+      //    printf("LED is off...\n");
+      // }
+      vTaskDelay( 100 / portTICK_PERIOD_MS);
    }
 
 }
@@ -83,10 +88,12 @@ void buttonTask( void *pvParameters){
    
 }
 
+
 void app_main(void)
 {
    xTaskCreate(&task_one, "task 1",  1024, NULL, tskIDLE_PRIORITY, NULL);  
    xTaskCreate(&task_two, "task 2",  1024, NULL, tskIDLE_PRIORITY, NULL);
-   xTaskCreate(&ledTask, "LED task", 1024, NULL, tskIDLE_PRIORITY, NULL);
+   xTaskCreate(&ledTask, "LED task", 1024, NULL, 7, NULL);
    xTaskCreate(&buttonTask, "Button task", 1024, NULL, tskIDLE_PRIORITY, NULL);
+
 }
