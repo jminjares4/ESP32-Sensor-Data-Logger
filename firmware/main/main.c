@@ -2,8 +2,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-#include "inc/led.h"
-#include "inc/button.h"
+#include "driver/inc/button.h"
+#include "driver/inc/led.h"
 
 
 #define ONBOARD_LED  2
