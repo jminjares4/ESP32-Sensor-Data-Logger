@@ -153,3 +153,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# SDK config
+sdkconfig
