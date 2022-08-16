@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#include "../inc/button.h"
+#include "button.h"
 #include <stdio.h>
 
 
