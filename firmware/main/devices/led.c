@@ -29,7 +29,7 @@ void led_enable(led_t *const led)
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
     esp_rom_gpio_pad_select_gpio(led->pin);
 #else
-    gpio_pad_select_gpio(button->pin);
+    gpio_pad_select_gpio(led->pin);
 #endif
     /* Set direction */
     gpio_set_direction(led->pin, GPIO_MODE_OUTPUT);
