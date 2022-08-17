@@ -34,7 +34,12 @@ void task_one(void *pvParameters)
 }
 void task_two(void *pvParameters)
 {
+   
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
    esp_rom_gpio_pad_select_gpio(EXTERNAL_LED);
+#else
+   gpio_pad_select_gpio(EXTERNAL_LED);
+#endif
    gpio_set_direction(EXTERNAL_LED, GPIO_MODE_OUTPUT);
 
    while (1)
@@ -58,9 +63,12 @@ void ledTask(void *pvParameters)
    while (1)
    {
       led_toggle(&led);
-      if(led.state){
+      if (led.state)
+      {
          printf("LED is on!\n");
-      }else{
+      }
+      else
+      {
          printf("LED is off...\n");
       }
       vTaskDelay(100 / portTICK_PERIOD_MS);
