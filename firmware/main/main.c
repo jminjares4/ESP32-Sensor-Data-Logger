@@ -29,12 +29,12 @@ void task_one(void *pvParameters)
       vTaskDelay(1000 / portTICK_PERIOD_MS);
       gpio_set_level(ONBOARD_LED, 1);
       vTaskDelay(1000 / portTICK_PERIOD_MS);
-      esp_rom_printf("Task 1\n");
+      printf("Task 1\n");
    }
 }
 void task_two(void *pvParameters)
 {
-   
+
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
    esp_rom_gpio_pad_select_gpio(EXTERNAL_LED);
 #else
@@ -48,7 +48,7 @@ void task_two(void *pvParameters)
       vTaskDelay(500 / portTICK_PERIOD_MS);
       gpio_set_level(EXTERNAL_LED, 1);
       vTaskDelay(500 / portTICK_PERIOD_MS);
-      esp_rom_printf("Task 2\n");
+      printf("Task 2\n");
    }
 }
 
