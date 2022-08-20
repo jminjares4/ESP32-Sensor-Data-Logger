@@ -123,15 +123,14 @@ void lcdTask(void *pvParameters)
    /* Set text */
    lcdSetText(&lcd, "ESP LCD", 3, 0);
 
-   /* Variables */
-   char buffer[16]; /* character buffer */
+   /* Variable */
    int count = 0;   /* count */
 
    while (1)
    {
       /* Set custom text */
-      sprintf(buffer, "Count: %d", count);
-      lcdSetText(&lcd, buffer, 0, 1);        /* Set text to second row */
+      lcdSetText(&lcd, "Count: ", 0, 1);
+      lcdSetInt(&lcd, count, 8, 1);
       count++; /* Increment count */
       vTaskDelay(1000 / portTICK_PERIOD_MS); /* 1 second delay */
    }
