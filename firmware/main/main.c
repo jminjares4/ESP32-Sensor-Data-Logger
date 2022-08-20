@@ -130,8 +130,9 @@ void lcdTask(void *pvParameters)
    while (1)
    {
       /* Set custom text */
-      sprintf(buffer, "Count: %d", count++);
+      sprintf(buffer, "Count: %d", count);
       lcdSetText(&lcd, buffer, 0, 1);        /* Set text to second row */
+      count++; /* Increment count */
       vTaskDelay(1000 / portTICK_PERIOD_MS); /* 1 second delay */
    }
 }
