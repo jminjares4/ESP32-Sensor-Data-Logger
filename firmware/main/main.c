@@ -4,9 +4,12 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 
-#include "devices/button.h"
-#include "devices/led.h"
-#include "devices/lcd_driver/esp_lcd.h"
+
+#include "button/button.h"
+#include "lcd/esp_lcd.h"
+#include "led/led.h"
+
+
 #include "esp_idf_version.h"
 
 #define ONBOARD_LED 2
