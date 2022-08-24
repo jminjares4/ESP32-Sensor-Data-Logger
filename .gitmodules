@@ -7,3 +7,6 @@
 [submodule "third_party/ESP32-LCD-1602-Driver"]
 	path = third_party/ESP32-LCD-1602-Driver
 	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
+[submodule "third_party/esp-idf-lib"]
+	path = third_party/esp-idf-lib
+	url = https://github.com/UncleRus/esp-idf-lib
