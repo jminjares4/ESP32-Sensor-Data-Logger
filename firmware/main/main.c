@@ -9,6 +9,8 @@
 #include "lcd/esp_lcd.h"
 #include "led/led.h"
 
+#include "bmp180.h"
+#include <inttypes.h>
 
 #include "esp_idf_version.h"
 
@@ -63,7 +65,7 @@ void task_two(void *pvParameters)
 void ledTask(void *pvParameters)
 {
    /* Set led */
-   led_t led = {.pin = 13, .state = OFF};
+   led_t led = {.pin = 15, .state = OFF};
 
    /* Enable led */
    led_enable(&led);
@@ -93,7 +95,7 @@ void buttonTask(void *pvParameters)
 
    /* Set led configuration */
    led_t extraLed;
-   extraLed.pin = 22;
+   extraLed.pin = 25;
    extraLed.state = OFF;
 
    /* Initialize led */
@@ -116,15 +118,21 @@ void lcdTask(void *pvParameters)
 {
    /* Create LCD object */
    lcd_t lcd;
-   /* Set LCD to default pinout */
-   lcdDefault(&lcd);
+
+   /* Set LCD to custom pinout */
+   gpio_num_t data[4] = {19, 18, 17, 16}; /* Data pins */
+   gpio_num_t en = 27;        /* Enable pin */
+   gpio_num_t regSel = 26;    /* Register Select pin */
+
+   lcdCtor(&lcd,data, en, regSel);
+
    /* Initialize LCD */
    lcdInit(&lcd);
    /* Clear previous data */
    lcdClear(&lcd);
 
    /* Set text */
-   lcdSetText(&lcd, "ESP LCD", 3, 0);
+   lcdSetText(&lcd, "Custom ESP LCD", 0, 0);
 
    /* Variable */
    int count = 0;   /* count */
@@ -139,6 +147,38 @@ void lcdTask(void *pvParameters)
    }
 }
 
+void bmp180Task(void *pvParameters){
+
+   ESP_ERROR_CHECK(i2cdev_init());
+
+   bmp180_dev_t dev; 
+   memset(&dev, 0, sizeof(bmp180_dev_t));
+
+   gpio_num_t i2c_sda = 21;
+   gpio_num_t i2c_scl = 22;
+
+   ESP_ERROR_CHECK(bmp180_init_desc(&dev, 0, i2c_sda, i2c_scl));
+   ESP_ERROR_CHECK(bmp180_init(&dev)); 
+
+   while (1)
+    {
+        float temp;
+        uint32_t pressure;
+
+        esp_err_t res = bmp180_measure(&dev, &temp, &pressure, BMP180_MODE_STANDARD);
+        if (res != ESP_OK)
+            printf("Could not measure: %d\n", res);
+        else
+            /* float is used in printf(). you need non-default configuration in
+             * sdkconfig for ESP8266, which is enabled by default for this
+             * example. see sdkconfig.defaults.esp8266
+             */
+            printf("Temperature: %.2f degrees Celsius; Pressure: %u Pa\n", temp, pressure);
+
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+}
+
 void app_main(void)
 {
    xTaskCreate(&task_one, "task 1", 1024, NULL, tskIDLE_PRIORITY, NULL);
@@ -146,4 +186,6 @@ void app_main(void)
    xTaskCreate(&ledTask, "LED task", 1024, NULL, 7, NULL);
    xTaskCreate(&buttonTask, "Button task", 1024, NULL, tskIDLE_PRIORITY, NULL);
    xTaskCreate(&lcdTask, "LCD task", 2048, NULL, 5, NULL);
+   xTaskCreate(&bmp180Task, "BMP180 Task", 2048, NULL, 5, NULL);
+
 }
