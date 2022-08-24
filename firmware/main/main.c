@@ -173,7 +173,7 @@ void bmp180Task(void *pvParameters){
              * sdkconfig for ESP8266, which is enabled by default for this
              * example. see sdkconfig.defaults.esp8266
              */
-            printf("Temperature: %.2f degrees Celsius; Pressure: %lu Pa\n", temp, pressure);
+            printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
 
         vTaskDelay(pdMS_TO_TICKS(500));
     }
