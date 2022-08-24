@@ -4,9 +4,7 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.16)
 
-
-set(EXTRA_COMPONENT_DIRS components/)
-
+set(EXTRA_COMPONENT_DIRS components/ ../third_party/esp-idf-lib/components)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
 project(main)
