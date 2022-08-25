@@ -1,6 +1,12 @@
 # ESP32-Sensor-Data-Logger
 
+<div align='center'>
+
 [![esp-idf build](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/build.yml)
+[![Documentation](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/documentation.yml/badge.svg)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/documentation.yml)
+[![pages-build-deployment](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/pages/pages-build-deployment)
+
+</div>
 
 ## Development
 |Microcontroller|Software|Enviroment|Operating System|
