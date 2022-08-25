@@ -22,11 +22,42 @@ typedef int lcd_err_t;      /*!< LCD error type */
 
 #define LCD_DATA_LINE 4 /*!< 4-Bit data line */
 
+
+/**
+ * @enum lcd_state_t esp_lcd.h
+ * @brief LCD state
+ * 
+
+ * 
+ * ### Example
+ * ~~~.c
+ * typedef enum{
+ *      LCD_INACTIVE = 0,
+ *      LCD_ACTIVE = 1,
+ * }lcd_state_t;
+ * ~~~
+ */
 typedef enum {
     LCD_INACTIVE = 0,   /*!< LCD inactive */
     LCD_ACTIVE = 1,     /*!< LCD active   */
 }lcd_state_t;
 
+
+/**
+ * @struct lcd_t esp_lcd.h
+ * @brief Custom lcd_t structure
+ * 
+ * 
+ * ### Example
+ * ~~~.c
+ * typedef struct{
+ *      gpio_num_t data[LCD_DATE_LINE];
+ *      gpio_num_t en;
+ *      gpio_num_t regSel;
+ *      lcd_state_t state;
+ * }lcd_t;
+ * ~~~
+ */
 typedef struct
 {
     gpio_num_t data[LCD_DATA_LINE]; /*!< LCD data line  */

@@ -25,7 +25,7 @@ typedef enum {
 
 /******************************************************************
  * \struct led_t lcd.h 
- * \brief LED object
+ * \brief Custom led_t object
  * 
  * ### Example
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.c
