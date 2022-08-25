@@ -156,3 +156,6 @@ dkms.conf
 
 # SDK config
 sdkconfig
+
+# Doxygen
+doc/
