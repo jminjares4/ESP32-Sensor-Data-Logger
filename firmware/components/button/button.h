@@ -13,12 +13,11 @@
 
 #include "driver/gpio.h"
 
-#define ESP_INTR_FLAG_DEFAULT 0 //default interrupt flag
-#define PULL_SEL_EN 1  // enable selected pull selection
+#define ESP_INTR_FLAG_DEFAULT 0 /*!< default interrupt */
 
 /**
  * @struct button_t button.h
- * @brief Custom button_t structure to automate button setup
+ * @brief Custom button_t structure
  * 
  * This structure allows the user to select its gpio pin, and set for pullup or pulldown base on configuration
  * and lastly if the button will be read as input or interrupt.
@@ -26,12 +25,12 @@
  * ### Example
  * ~~~.c
  * typedef struct{
- *      gpio_num_t pin; // gpio pin number
+ *      gpio_num_t pin;
  *      union{
- *          gpio_pullup_t up; //pullup
- *          gpio_pulldown_t down; //pulldown
- *      }pull_sel; //select configuration 
- *      void (*func)(void *arg); //gpio interrupt routine
+ *          gpio_pullup_t up;
+ *          gpio_pulldown_t down;
+ *      }pull_sel;
+ *      void (*func)(void *arg);
  * }button_t;
  * ~~~
  */
