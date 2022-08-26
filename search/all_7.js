@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../d1/da6/namespacemonitor.html#a47ffa6430c2dd2cec4a299110598d578',1,'monitor']]],
-  ['main_2ec_1',['main.c',['../d0/d29/main_8c.html',1,'']]],
-  ['mainpage_2emd_2',['mainpage.md',['../dc/dc6/mainpage_8md.html',1,'']]],
-  ['monitor_3',['monitor',['../d1/da6/namespacemonitor.html',1,'']]],
-  ['monitor_2epy_4',['monitor.py',['../d5/d32/monitor_8py.html',1,'']]]
+  ['height_0',['Height',['../d4/d6e/struct_f_o_n_t_s___s_i_z_e__t.html#acceb5925ee5622e895b923ddcb49ac7a',1,'FONTS_SIZE_t']]]
 ];
