@@ -10,3 +10,6 @@
 [submodule "third_party/esp-idf-lib"]
 	path = third_party/esp-idf-lib
 	url = https://github.com/UncleRus/esp-idf-lib
+[submodule "third_party/SSD1306-Driver"]
+	path = third_party/SSD1306-Driver
+	url = https://github.com/NaitikSanas/SSD1306-Driver-esp32-with-ESP-IDF
