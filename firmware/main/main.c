@@ -211,7 +211,8 @@ void ssd1306Task(void *pvParameters){
          SSD1306_GotoXY(10,10);
          SSD1306_Clear();
          vTaskDelay(10);
-         sprintf(str,"T:%.2f C",dummy_data.temp);
+         float temp_f = (dummy_data.temp * 9/5) + 32;
+         sprintf(str,"T:%.2f F", temp_f);
          SSD1306_Puts(str,&Font_11x18,1);
          SSD1306_GotoXY(10,40);
          sprintf(str,"P:%d Pa",dummy_data.pressure);
