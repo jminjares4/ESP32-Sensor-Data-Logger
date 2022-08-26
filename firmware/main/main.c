@@ -3,16 +3,29 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-
+#include "freertos/queue.h"
 
 #include "button/button.h"
 #include "lcd/esp_lcd.h"
 #include "led/led.h"
 
+#include "oled/ssd1306.h"
+#include "oled/fonts.h"
+
 #include "bmp180.h"
 #include <inttypes.h>
 
 #include "esp_idf_version.h"
+
+/* Dummy struct */
+typedef struct {
+    float temp;
+    int pressure;
+}temp_t;
+
+
+/* Global Queue handle */
+QueueHandle_t myQueue;
 
 #define ONBOARD_LED 2
 #define EXTERNAL_LED 4
@@ -168,24 +181,57 @@ void bmp180Task(void *pvParameters){
         esp_err_t res = bmp180_measure(&dev, &temp, &pressure, BMP180_MODE_STANDARD);
         if (res != ESP_OK)
             printf("Could not measure: %d\n", res);
-        else
+        else{
             /* float is used in printf(). you need non-default configuration in
              * sdkconfig for ESP8266, which is enabled by default for this
              * example. see sdkconfig.defaults.esp8266
              */
             printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
+            temp_t data = {.temp = temp, .pressure= pressure};
+            xQueueSendToBack(myQueue, &data, 0);
+        }
 
         vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 
+void ssd1306Task(void *pvParameters){
+   
+   SSD1306_Init();
+   
+   printf("SSD1306 Initialized...\n");
+
+   char str[16];
+
+   temp_t dummy_data = {.temp = 0.0, .pressure = 0};
+
+   while(1){
+      if(xQueueReceive(myQueue, &dummy_data, (TickType_t)100) == pdPASS){
+
+         SSD1306_GotoXY(10,10);
+         SSD1306_Clear();
+         vTaskDelay(10);
+         sprintf(str,"T:%.2f C",dummy_data.temp);
+         SSD1306_Puts(str,&Font_11x18,1);
+         SSD1306_GotoXY(10,40);
+         sprintf(str,"P:%d Pa",dummy_data.pressure);
+         SSD1306_Puts(str,&Font_11x18,1);
+         SSD1306_UpdateScreen();
+      }
+   }
+
+}
+
 void app_main(void)
 {
+   myQueue = xQueueCreate(2, sizeof(temp_t));
+   
    xTaskCreate(&task_one, "task 1", 1024, NULL, tskIDLE_PRIORITY, NULL);
    xTaskCreate(&task_two, "task 2", 1024, NULL, tskIDLE_PRIORITY, NULL);
    xTaskCreate(&ledTask, "LED task", 1024, NULL, 7, NULL);
    xTaskCreate(&buttonTask, "Button task", 1024, NULL, tskIDLE_PRIORITY, NULL);
    xTaskCreate(&lcdTask, "LCD task", 2048, NULL, 5, NULL);
    xTaskCreate(&bmp180Task, "BMP180 Task", 2048, NULL, 5, NULL);
+   xTaskCreate(&ssd1306Task, "OLED Task", 2048, NULL, 3, NULL);
 
 }
