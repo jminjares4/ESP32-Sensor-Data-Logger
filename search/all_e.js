@@ -35,7 +35,7 @@ var searchData=
   ['ssd1306_5fnormaldisplay_32',['SSD1306_NORMALDISPLAY',['../db/d27/ssd1306_8c.html#ae7307026b4917a896d71853d59a5edb0',1,'ssd1306.c']]],
   ['ssd1306_5foff_33',['SSD1306_OFF',['../db/d27/ssd1306_8c.html#a7dd5e7a9116bf1070f69ef980f427942',1,'ssd1306.c']]],
   ['ssd1306_5fon_34',['SSD1306_ON',['../db/d27/ssd1306_8c.html#a1d25d3647f34c503b2160103c2a20d4c',1,'ssd1306.c']]],
-  ['ssd1306_5fputc_35',['SSD1306_Putc',['../db/d85/ssd1306_8h.html#a86fb0c36af229809731769a68f427967',1,'SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c'],['../db/d27/ssd1306_8c.html#a86fb0c36af229809731769a68f427967',1,'SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c']]],
+  ['ssd1306_5fputc_35',['SSD1306_Putc',['../db/d27/ssd1306_8c.html#a86fb0c36af229809731769a68f427967',1,'SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c'],['../db/d85/ssd1306_8h.html#a86fb0c36af229809731769a68f427967',1,'SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c']]],
   ['ssd1306_5fputs_36',['SSD1306_Puts',['../db/d27/ssd1306_8c.html#a9218608a02f178b377a62a80995b7628',1,'SSD1306_Puts(char *str, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c'],['../db/d85/ssd1306_8h.html#a9218608a02f178b377a62a80995b7628',1,'SSD1306_Puts(char *str, FontDef_t *Font, SSD1306_COLOR_t color):&#160;ssd1306.c']]],
   ['ssd1306_5fright_5fhorizontal_5fscroll_37',['SSD1306_RIGHT_HORIZONTAL_SCROLL',['../db/d27/ssd1306_8c.html#a50443d2bd447f0fb0d6679615c1b266f',1,'ssd1306.c']]],
   ['ssd1306_5fscrolldiagleft_38',['SSD1306_Scrolldiagleft',['../db/d27/ssd1306_8c.html#a0085b07085ca0091305670341594c8dc',1,'SSD1306_Scrolldiagleft(uint8_t start_row, uint8_t end_row):&#160;ssd1306.c'],['../db/d85/ssd1306_8h.html#a0085b07085ca0091305670341594c8dc',1,'SSD1306_Scrolldiagleft(uint8_t start_row, uint8_t end_row):&#160;ssd1306.c']]],
@@ -52,7 +52,6 @@ var searchData=
   ['ssd1306_5fwidth_49',['SSD1306_WIDTH',['../db/d85/ssd1306_8h.html#ae5a2aa8865dd03537b97fd1c9037371b',1,'ssd1306.h']]],
   ['ssd1306_5fwritecommand_50',['SSD1306_WRITECOMMAND',['../db/d27/ssd1306_8c.html#afb95e23bfa82e5304dac3dd128d19329',1,'ssd1306.c']]],
   ['ssd1306_5fwritedata_51',['SSD1306_WRITEDATA',['../db/d27/ssd1306_8c.html#a35498b5893d56701b61da294f1bd1366',1,'ssd1306.c']]],
-  ['ssd1306task_52',['ssd1306Task',['../d0/d29/main_8c.html#adc25d048a573b9095bd497495c848ea3',1,'main.c']]],
-  ['state_53',['state',['../df/db0/structlcd__t.html#a26160a6755e92b432e480bae30ee3a25',1,'lcd_t::state()'],['../d0/dbe/structled__t.html#a719ba949d57a87da8cb97015606bf443',1,'led_t::state()']]],
-  ['state_5ft_54',['state_t',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248',1,'led.h']]]
+  ['state_52',['state',['../df/db0/structlcd__t.html#a26160a6755e92b432e480bae30ee3a25',1,'lcd_t::state()'],['../d0/dbe/structled__t.html#a719ba949d57a87da8cb97015606bf443',1,'led_t::state()']]],
+  ['state_5ft_53',['state_t',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248',1,'led.h']]]
 ];

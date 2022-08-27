@@ -27,7 +27,6 @@ var searchData=
   ['led_5fon_24',['led_on',['../db/da0/led_8h.html#a9d8a79162be2befa7d97f6147b0b866d',1,'led_on(led_t *const led):&#160;led.c'],['../de/dbb/led_8c.html#a9d8a79162be2befa7d97f6147b0b866d',1,'led_on(led_t *const led):&#160;led.c']]],
   ['led_5ft_25',['led_t',['../d0/dbe/structled__t.html',1,'']]],
   ['led_5ftoggle_26',['led_toggle',['../de/dbb/led_8c.html#ac9c8974b9359d2c4b9185b21a9e6661c',1,'led_toggle(led_t *const led):&#160;led.c'],['../db/da0/led_8h.html#ac9c8974b9359d2c4b9185b21a9e6661c',1,'led_toggle(led_t *const led):&#160;led.c']]],
-  ['ledtask_27',['ledTask',['../d0/d29/main_8c.html#a0e9abc4adafb917c6af448aca6042e96',1,'main.c']]],
-  ['length_28',['Length',['../d4/d6e/struct_f_o_n_t_s___s_i_z_e__t.html#a211bb38eac580c435b2a1ecba84d26bb',1,'FONTS_SIZE_t']]],
-  ['lib_5ftypedefs_29',['LIB_Typedefs',['../df/ddf/group___l_i_b___typedefs.html',1,'']]]
+  ['length_27',['Length',['../d4/d6e/struct_f_o_n_t_s___s_i_z_e__t.html#a211bb38eac580c435b2a1ecba84d26bb',1,'FONTS_SIZE_t']]],
+  ['lib_5ftypedefs_28',['LIB_Typedefs',['../df/ddf/group___l_i_b___typedefs.html',1,'']]]
 ];
