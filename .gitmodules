@@ -1,15 +1,18 @@
-[submodule "third_party/ESP32_Installation"]
-	path = third_party/ESP32_Installation
-	url = https://github.com/jminjares4/ESP32_Installation
 [submodule "third_party/doxygen-awesome-css"]
 	path = third_party/doxygen-awesome-css
 	url = https://github.com/jothepro/doxygen-awesome-css
-[submodule "third_party/ESP32-LCD-1602-Driver"]
-	path = third_party/ESP32-LCD-1602-Driver
-	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
 [submodule "third_party/esp-idf-lib"]
 	path = third_party/esp-idf-lib
 	url = https://github.com/UncleRus/esp-idf-lib
-[submodule "third_party/SSD1306-Driver"]
-	path = third_party/SSD1306-Driver
+[submodule "third_party/esp_extras/esp_installation"]
+	path = third_party/esp_extras/esp_installation
+	url = https://github.com/jminjares4/ESP32_Installation
+[submodule "esp_extras/ESP32-LCD-Driver"]
+	path = esp_extras/ESP32-LCD-Driver
+	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
+[submodule "third_party/esp_extras/ESP32-LCD-Driver"]
+	path = third_party/esp_extras/ESP32-LCD-Driver
+	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
+[submodule "third_party/esp_extras/ESP-SSD1306-Driver"]
+	path = third_party/esp_extras/ESP-SSD1306-Driver
 	url = https://github.com/NaitikSanas/SSD1306-Driver-esp32-with-ESP-IDF
