@@ -7,9 +7,6 @@
 [submodule "third_party/esp_extras/esp_installation"]
 	path = third_party/esp_extras/esp_installation
 	url = https://github.com/jminjares4/ESP32_Installation
-[submodule "esp_extras/ESP32-LCD-Driver"]
-	path = esp_extras/ESP32-LCD-Driver
-	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
 [submodule "third_party/esp_extras/ESP32-LCD-Driver"]
 	path = third_party/esp_extras/ESP32-LCD-Driver
 	url = https://github.com/jminjares4/ESP32-LCD-1602-Driver
