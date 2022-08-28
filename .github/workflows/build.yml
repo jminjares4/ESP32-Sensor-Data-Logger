@@ -72,15 +72,3 @@ jobs:
       uses: espressif/esp-idf-ci-action@release-v4.3
       with:
         path: 'firmware'
-
-  build-release-v4_2:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
-    - name: esp-idf build
-      uses: espressif/esp-idf-ci-action@release-v4.2
-      with:
-        path: 'firmware'
