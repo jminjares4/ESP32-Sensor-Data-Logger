@@ -1,9 +1,9 @@
 <map id="firmware/components/oled/ssd1306.c" name="firmware/components/oled/ssd1306.c">
-<area shape="rect" id="node1" title=" " alt="" coords="75,5,221,47"/>
-<area shape="rect" id="node2" href="$db/d85/ssd1306_8h.html" title=" " alt="" coords="107,95,189,121"/>
-<area shape="rect" id="node3" href="$d3/d78/fonts_8h.html" title=" " alt="" coords="75,169,136,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,244,69,271"/>
-<area shape="rect" id="node6" title=" " alt="" coords="161,169,223,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="248,169,333,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="93,244,157,271"/>
+<area shape="rect" id="node1" title=" " alt="" coords="75,5,221,45"/>
+<area shape="rect" id="node2" href="$db/d85/ssd1306_8h.html" title=" " alt="" coords="107,93,189,119"/>
+<area shape="rect" id="node3" href="$d3/d78/fonts_8h.html" title=" " alt="" coords="75,167,136,192"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,240,69,265"/>
+<area shape="rect" id="node6" title=" " alt="" coords="161,167,223,192"/>
+<area shape="rect" id="node7" title=" " alt="" coords="248,167,333,192"/>
+<area shape="rect" id="node5" title=" " alt="" coords="93,240,157,265"/>
 </map>

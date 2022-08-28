@@ -1,5 +1,4 @@
 <map id="firmware/components/oled/ssd1306.h" name="firmware/components/oled/ssd1306.h">
-<area shape="rect" id="node1" title=" " alt="" coords="91,5,237,47"/>
-<area shape="rect" id="node2" href="$db/d27/ssd1306_8c.html" title=" " alt="" coords="5,95,152,136"/>
-<area shape="rect" id="node3" href="$d0/d29/main_8c.html" title=" " alt="" coords="177,102,322,129"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,45"/>
+<area shape="rect" id="node2" href="$db/d27/ssd1306_8c.html" title=" " alt="" coords="5,93,152,133"/>
 </map>

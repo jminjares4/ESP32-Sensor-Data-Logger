@@ -1,5 +1,5 @@
 <map id="firmware/components/led/led.h" name="firmware/components/led/led.h">
-<area shape="rect" id="node1" title="Custom LED driver header file." alt="" coords="91,5,237,47"/>
-<area shape="rect" id="node2" href="$de/dbb/led_8c.html" title="Custom LED driver source file." alt="" coords="5,95,152,136"/>
-<area shape="rect" id="node3" href="$d0/d29/main_8c.html" title=" " alt="" coords="177,102,322,129"/>
+<area shape="rect" id="node1" title="Custom LED driver header file." alt="" coords="91,5,237,45"/>
+<area shape="rect" id="node2" href="$de/dbb/led_8c.html" title="Custom LED driver source file." alt="" coords="5,93,152,133"/>
+<area shape="rect" id="node3" href="$d0/d29/main_8c.html" title=" " alt="" coords="177,101,322,126"/>
 </map>

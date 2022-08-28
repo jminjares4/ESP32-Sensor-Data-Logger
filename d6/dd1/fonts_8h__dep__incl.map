@@ -1,7 +1,6 @@
 <map id="firmware/components/oled/fonts.h" name="firmware/components/oled/fonts.h">
-<area shape="rect" id="node1" title=" " alt="" coords="176,5,323,47"/>
-<area shape="rect" id="node2" href="$d8/d57/fonts_8c.html" title=" " alt="" coords="5,95,152,136"/>
-<area shape="rect" id="node3" href="$db/d85/ssd1306_8h.html" title=" " alt="" coords="176,95,323,136"/>
-<area shape="rect" id="node5" href="$d0/d29/main_8c.html" title=" " alt="" coords="287,191,433,218"/>
-<area shape="rect" id="node4" href="$db/d27/ssd1306_8c.html" title=" " alt="" coords="116,184,263,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="91,5,237,45"/>
+<area shape="rect" id="node2" href="$d8/d57/fonts_8c.html" title=" " alt="" coords="5,93,152,133"/>
+<area shape="rect" id="node3" href="$db/d85/ssd1306_8h.html" title=" " alt="" coords="176,93,323,133"/>
+<area shape="rect" id="node4" href="$db/d27/ssd1306_8c.html" title=" " alt="" coords="176,181,323,221"/>
 </map>

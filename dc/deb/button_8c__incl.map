@@ -1,7 +1,7 @@
 <map id="firmware/components/button/button.c" name="firmware/components/button/button.c">
-<area shape="rect" id="node1" title="button.h source code" alt="" coords="50,5,197,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,65,121"/>
-<area shape="rect" id="node3" href="$d7/d0e/button_8h.html" title="Hardware Application Layer for Buttons." alt="" coords="89,95,157,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="182,95,305,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="77,169,169,196"/>
+<area shape="rect" id="node1" title="button.h source code" alt="" coords="50,5,197,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,93,65,119"/>
+<area shape="rect" id="node3" href="$d7/d0e/button_8h.html" title="Hardware Application Layer for Buttons." alt="" coords="89,93,157,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="182,93,305,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="77,167,169,192"/>
 </map>

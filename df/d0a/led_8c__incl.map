@@ -1,6 +1,6 @@
 <map id="firmware/components/led/led.c" name="firmware/components/led/led.c">
-<area shape="rect" id="node1" title="Custom LED driver source file." alt="" coords="33,5,179,47"/>
-<area shape="rect" id="node2" href="$db/da0/led_8h.html" title="Custom LED driver header file." alt="" coords="27,95,76,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="101,95,223,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,169,97,196"/>
+<area shape="rect" id="node1" title="Custom LED driver source file." alt="" coords="33,5,179,45"/>
+<area shape="rect" id="node2" href="$db/da0/led_8h.html" title="Custom LED driver header file." alt="" coords="27,93,76,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="101,93,223,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,167,97,192"/>
 </map>
