@@ -21,7 +21,10 @@
 #include "esp_vfs_fat.h"
 #include "sdmmc_cmd.h"
 
+/* ESP-IDF version */
 #include "esp_idf_version.h"
+/* Timer */
+#include "esp_timer.h"
 
 static const char *TAG = "example";
 
@@ -33,6 +36,17 @@ static const char *TAG = "example";
 #define PIN_NUM_MOSI 23
 #define PIN_NUM_CLK 18
 #define PIN_NUM_CS 13
+
+#define ONBOARD_LED 2
+
+/* ESP timer period is set by us */
+#define HALF_SECOND     500000
+#define ONE_SECOND      1000000
+#define FIVE_SECOND     5000000
+#define THIRTY_SECOND   30000000
+#define ONE_MINUTE      60000000
+#define FIVE_MINUTE     300000000
+#define TEN_MINUTE      600000000
 
 void lcdTask(void *pvParameters)
 {
@@ -69,10 +83,12 @@ void lcdTask(void *pvParameters)
 
 void bmp180Task(void *pvParameters)
 {
-
+   /* Create bmp180 device */
    bmp180_dev_t dev;
+   /* Clear memory */
    memset(&dev, 0, sizeof(bmp180_dev_t));
-
+   
+   /* I2C pins */
    gpio_num_t i2c_sda = 21;
    gpio_num_t i2c_scl = 22;
 
@@ -284,15 +300,72 @@ void sdcardTask(void *pvParameters)
 
    // deinitialize the bus after all devices are removed
    spi_bus_free(host.slot);
+
+   while (1)
+   {
+      vTaskDelay(100);
+   }
+}
+
+static void timer_callback(void *arg)
+{
+   /* Send message */
+   printf("Timer was trigger!!!\n");
+   /* store previous state of gpio */
+   static bool on;
+   /* toggle state */
+   on = !on;
+   /* Set gpio level */
+   gpio_set_level(ONBOARD_LED, on);
+}
+
+void timerTask(void *pvParameters)
+{
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
+   esp_rom_gpio_pad_select_gpio(ONBOARD_LED);
+#else
+   gpio_pad_select_gpio(ONBOARD_LED);
+#endif
+   gpio_set_direction(ONBOARD_LED, GPIO_MODE_OUTPUT);
+   gpio_set_level(ONBOARD_LED, 0);
+
+   /* Set timer arguments */
+   esp_timer_create_args_t timer_args = {
+       .callback = timer_callback,
+       .arg = NULL,
+       .dispatch_method = ESP_TIMER_TASK,
+       .name = "Sensor Timer Trigger",
+       .skip_unhandled_events = false,
+   };
+   /* Create timer handle */
+   esp_timer_handle_t timer_handle;
+   /* Create an instance of timer */
+   esp_timer_create(&timer_args, &timer_handle);
+
+   /* Set period */
+   uint64_t period = HALF_SECOND;
+
+   /* Start periodic timer */
+   esp_timer_start_periodic(timer_handle, period);
+
+   while (1)
+   {
+      vTaskDelay(100); /* avoid WDT trigger */
+   }
 }
 
 void app_main(void)
 {
    /* Create mutex for i2c devices */
    ESP_ERROR_CHECK(i2cdev_init());
-
-   xTaskCreate(&sdcardTask, "SDCARD Task", 2048, NULL, 5, NULL);
+   /* Create SD Card task */
+   xTaskCreate(&sdcardTask, "SDCARD Task", 4096, NULL, 12, NULL);
+   /* Create LCD task */
    xTaskCreate(&lcdTask, "LCD task", 2048, NULL, 3, NULL);
+   /* Create bmp180 task */
    xTaskCreate(&bmp180Task, "BMP180 Task", 1920, NULL, 4, NULL);
+   /* Create RTC task */
    xTaskCreate(&rtcTask, "RTC Task", 2048, NULL, 4, NULL);
+   /* Create timer task @ 1 second trigger  */
+   xTaskCreate(&timerTask, "ESP Timer Task", 2048, NULL, 10, NULL);
 }
