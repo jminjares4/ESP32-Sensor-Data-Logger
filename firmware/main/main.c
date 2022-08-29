@@ -104,7 +104,7 @@ void bmp180Task(void *pvParameters)
       /* Wait for nofitication */
       uint32_t count = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
       /* Display re */
-      printf("BMP180 count: %d\n", count);
+      printf("BMP180 count: %lu\n", (unsigned long)count);
 
       float temp;
       uint32_t pressure;
@@ -150,7 +150,7 @@ void rtcTask(void *pvParameters)
       /* Wait for nofitication */
       uint32_t count = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
       /* Display re */
-      printf("D3231 count: %d\n", count);
+      printf("D3231 count: %lu\n", (unsigned long)count);
 
       float temp;
 
