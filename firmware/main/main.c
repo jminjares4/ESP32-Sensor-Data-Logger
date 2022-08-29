@@ -48,6 +48,10 @@ static const char *TAG = "example";
 #define FIVE_MINUTE     300000000
 #define TEN_MINUTE      600000000
 
+/* Notification Handle */
+static TaskHandle_t sensorHandle = NULL;
+static TaskHandle_t rtcHandle = NULL;
+
 void lcdTask(void *pvParameters)
 {
    /* Create LCD object */
@@ -97,6 +101,11 @@ void bmp180Task(void *pvParameters)
 
    while (1)
    {
+      /* Wait for nofitication */
+      uint32_t count = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+      /* Display re */
+      printf("BMP180 count: %lu\n", (unsigned long)count);
+
       float temp;
       uint32_t pressure;
 
@@ -137,9 +146,15 @@ void rtcTask(void *pvParameters)
 
    while (1)
    {
+
+      /* Wait for nofitication */
+      uint32_t count = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+      /* Display re */
+      printf("D3231 count: %lu\n", (unsigned long)count);
+
       float temp;
 
-      vTaskDelay(1000 / portTICK_PERIOD_MS);
+      // vTaskDelay(1000 / portTICK_PERIOD_MS);
 
       if (ds3231_get_temp_float(&dev, &temp) != ESP_OK)
       {
@@ -317,6 +332,11 @@ static void timer_callback(void *arg)
    on = !on;
    /* Set gpio level */
    gpio_set_level(ONBOARD_LED, on);
+
+   /* Give task handle */
+   xTaskNotifyGive(sensorHandle);
+   xTaskNotifyGive(rtcHandle);
+
 }
 
 void timerTask(void *pvParameters)
@@ -363,9 +383,9 @@ void app_main(void)
    /* Create LCD task */
    xTaskCreate(&lcdTask, "LCD task", 2048, NULL, 3, NULL);
    /* Create bmp180 task */
-   xTaskCreate(&bmp180Task, "BMP180 Task", 1920, NULL, 4, NULL);
+   xTaskCreate(&bmp180Task, "BMP180 Task", 1920, NULL, 4, &sensorHandle);
    /* Create RTC task */
-   xTaskCreate(&rtcTask, "RTC Task", 2048, NULL, 4, NULL);
+   xTaskCreate(&rtcTask, "RTC Task", 2048, NULL, 4, &rtcHandle);
    /* Create timer task @ 1 second trigger  */
    xTaskCreate(&timerTask, "ESP Timer Task", 2048, NULL, 10, NULL);
 }
