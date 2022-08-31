@@ -40,17 +40,37 @@ static const char *TAG = "example";
 #define ONBOARD_LED 2
 
 /* ESP timer period is set by us */
-#define HALF_SECOND     500000
-#define ONE_SECOND      1000000
-#define FIVE_SECOND     5000000
-#define THIRTY_SECOND   30000000
-#define ONE_MINUTE      60000000
-#define FIVE_MINUTE     300000000
-#define TEN_MINUTE      600000000
+#define HALF_SECOND 500000
+#define ONE_SECOND 1000000
+#define FIVE_SECOND 5000000
+#define THIRTY_SECOND 30000000
+#define ONE_MINUTE 60000000
+#define FIVE_MINUTE 300000000
+#define TEN_MINUTE 600000000
 
 /* Notification Handle */
 static TaskHandle_t sensorHandle = NULL;
 static TaskHandle_t rtcHandle = NULL;
+
+/* Queue */
+typedef enum
+{
+   NO_SENSOR = -1,
+   BMP180_SENSOR = 0,
+   DS3231_SENSOR = 1,
+} sensor_event_t;
+
+typedef struct
+{
+   sensor_event_t event;
+   void *data;
+   void *extraData;
+} data_t;
+
+static QueueHandle_t pressureSensorQueue;
+static QueueHandle_t realTimeClockQueue;
+
+#define QUEUE_SIZE 10
 
 void lcdTask(void *pvParameters)
 {
@@ -91,13 +111,16 @@ void bmp180Task(void *pvParameters)
    bmp180_dev_t dev;
    /* Clear memory */
    memset(&dev, 0, sizeof(bmp180_dev_t));
-   
+
    /* I2C pins */
    gpio_num_t i2c_sda = 21;
    gpio_num_t i2c_scl = 22;
 
    ESP_ERROR_CHECK(bmp180_init_desc(&dev, 0, i2c_sda, i2c_scl));
    ESP_ERROR_CHECK(bmp180_init(&dev));
+
+   data_t bmp180Sensor;
+   bmp180Sensor.event = BMP180_SENSOR;
 
    while (1)
    {
@@ -118,6 +141,12 @@ void bmp180Task(void *pvParameters)
           * example. see sdkconfig.defaults.esp8266
           */
          printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
+
+      bmp180Sensor.data = (void *)&temp;
+      bmp180Sensor.extraData = (void*)&pressure;
+
+      /* Send queue data */
+      xQueueSendToBack(pressureSensorQueue, &bmp180Sensor, 0);
 
       vTaskDelay(pdMS_TO_TICKS(500));
    }
@@ -143,6 +172,9 @@ void rtcTask(void *pvParameters)
        .tm_min = 7,
        .tm_sec = 0};
    ESP_ERROR_CHECK(ds3231_set_time(&dev, &time));
+
+   data_t ds3231Sensor;
+   ds3231Sensor.event = DS3231_SENSOR;
 
    while (1)
    {
@@ -174,6 +206,10 @@ void rtcTask(void *pvParameters)
        */
       printf("%04d-%02d-%02d %02d:%02d:%02d, %.2f deg Cel\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
              time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, temp);
+
+      ds3231Sensor.data = (void *)&time;
+
+      xQueueSendToBack(realTimeClockQueue, &ds3231Sensor, 0);
    }
 }
 
@@ -336,7 +372,6 @@ static void timer_callback(void *arg)
    /* Give task handle */
    xTaskNotifyGive(sensorHandle);
    xTaskNotifyGive(rtcHandle);
-
 }
 
 void timerTask(void *pvParameters)
@@ -374,8 +409,50 @@ void timerTask(void *pvParameters)
    }
 }
 
+void dataTask(void *pvParameters)
+{
+
+   data_t sensor[2];
+   /*RTC sensor data */
+   struct tm time;
+   /* Pressure sensor data */
+   float temp = 0.0;
+   uint32_t pressure = 0;
+
+   while (1)
+   {
+      if (xQueueReceive(realTimeClockQueue, &sensor[0], (TickType_t)100) == pdPASS &&
+          xQueueReceive(pressureSensorQueue, &sensor[1], (TickType_t)100) == pdPASS)
+      {
+         if (sensor[0].event == DS3231_SENSOR)
+         {
+            time = *(struct tm *)sensor[0].data;
+         }
+         if (sensor[1].event == BMP180_SENSOR)
+         {
+            temp = *(float *)sensor[1].data;
+            pressure = *(uint32_t*)sensor[1].extraData;
+         }
+
+         printf("RTC: %04d-%02d-%02d %02d:%02d:%02d\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
+                time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
+
+         printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
+
+      }
+      else
+      {
+         vTaskDelay(100);
+      }
+   }
+}
+
 void app_main(void)
 {
+   /* Initialize Queue*/
+   pressureSensorQueue = xQueueCreate(QUEUE_SIZE, sizeof(data_t));
+   realTimeClockQueue = xQueueCreate(QUEUE_SIZE, sizeof(data_t));
+
    /* Create mutex for i2c devices */
    ESP_ERROR_CHECK(i2cdev_init());
    /* Create SD Card task */
@@ -388,4 +465,7 @@ void app_main(void)
    xTaskCreate(&rtcTask, "RTC Task", 2048, NULL, 4, &rtcHandle);
    /* Create timer task @ 1 second trigger  */
    xTaskCreate(&timerTask, "ESP Timer Task", 2048, NULL, 10, NULL);
+
+   /* Create temp task to display queue data*/
+   xTaskCreate(&dataTask, "Queue Data Task", 1024, NULL, 10, NULL);
 }
