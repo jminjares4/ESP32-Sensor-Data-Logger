@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['read_5fbutton_0',['read_button',['../d7/dc7/button_8c.html#aab7e31b4aaa528e70880fd286f1db403',1,'read_button(button_t *const button):&#160;button.c'],['../d7/d0e/button_8h.html#aab7e31b4aaa528e70880fd286f1db403',1,'read_button(button_t *const button):&#160;button.c']]],
-  ['register_5fselect_5fpin_1',['REGISTER_SELECT_PIN',['../d1/dea/esp__lcd_8c.html#aaefbeda8643d2c9f65a0bc7bd31143b9',1,'esp_lcd.c']]],
-  ['regsel_2',['regSel',['../df/db0/structlcd__t.html#ac4923b33af337e4a57ca1ddf25b005ba',1,'lcd_t']]],
-  ['rtctask_3',['rtcTask',['../d0/d29/main_8c.html#af0464cdcda80baf76828b9cbea328793',1,'main.c']]]
+  ['pin_0',['pin',['../d7/d01/structbutton__t.html#a1e99f36ffafaff17a56021461ca325ca',1,'button_t::pin()'],['../d0/dbe/structled__t.html#ac9e5f6e409f17ed146f5fbbaccbaa59e',1,'led_t::pin()']]],
+  ['pin_5fnum_5fclk_1',['PIN_NUM_CLK',['../d0/d29/main_8c.html#a756bcaa6e44d1879623a058849c66fbb',1,'main.c']]],
+  ['pin_5fnum_5fcs_2',['PIN_NUM_CS',['../d0/d29/main_8c.html#a6c332c3f862c9e17cb09b32c73516a4a',1,'main.c']]],
+  ['pin_5fnum_5fmiso_3',['PIN_NUM_MISO',['../d0/d29/main_8c.html#a4ffa0949bfda52d9c7b37fcb148cbb53',1,'main.c']]],
+  ['pin_5fnum_5fmosi_4',['PIN_NUM_MOSI',['../d0/d29/main_8c.html#a060569807a8819489e6a7b4ee17ad67b',1,'main.c']]],
+  ['pull_5fsel_5',['pull_sel',['../d7/d01/structbutton__t.html#a1460025aeb2e2e2fc7c36911d3938404',1,'button_t']]]
 ];

@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['pin_0',['pin',['../d7/d01/structbutton__t.html#a1e99f36ffafaff17a56021461ca325ca',1,'button_t::pin()'],['../d0/dbe/structled__t.html#ac9e5f6e409f17ed146f5fbbaccbaa59e',1,'led_t::pin()']]],
-  ['pin_5fnum_5fclk_1',['PIN_NUM_CLK',['../d0/d29/main_8c.html#a756bcaa6e44d1879623a058849c66fbb',1,'main.c']]],
-  ['pin_5fnum_5fcs_2',['PIN_NUM_CS',['../d0/d29/main_8c.html#a6c332c3f862c9e17cb09b32c73516a4a',1,'main.c']]],
-  ['pin_5fnum_5fmiso_3',['PIN_NUM_MISO',['../d0/d29/main_8c.html#a4ffa0949bfda52d9c7b37fcb148cbb53',1,'main.c']]],
-  ['pin_5fnum_5fmosi_4',['PIN_NUM_MOSI',['../d0/d29/main_8c.html#a060569807a8819489e6a7b4ee17ad67b',1,'main.c']]],
-  ['pull_5fsel_5',['pull_sel',['../d7/d01/structbutton__t.html#a1460025aeb2e2e2fc7c36911d3938404',1,'button_t']]]
+  ['off_0',['OFF',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248aac132f2982b98bcaa3445e535a03ff75',1,'led.h']]],
+  ['on_1',['ON',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248a977d478dacaae531f95695750d1e9d03',1,'led.h']]],
+  ['onboard_5fled_2',['ONBOARD_LED',['../d0/d29/main_8c.html#a547f7691f0e83d2e9fd22bf5b3c08b0a',1,'main.c']]],
+  ['one_5fminute_3',['ONE_MINUTE',['../d0/d29/main_8c.html#aa838923f78f23c9c9547de7795e93fa1',1,'main.c']]],
+  ['one_5fsecond_4',['ONE_SECOND',['../d0/d29/main_8c.html#ac93edbf7e8fdbf7398453d51bbd37a97',1,'main.c']]]
 ];

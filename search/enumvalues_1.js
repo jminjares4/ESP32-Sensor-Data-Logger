@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['off_0',['OFF',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248aac132f2982b98bcaa3445e535a03ff75',1,'led.h']]],
-  ['on_1',['ON',['../db/da0/led_8h.html#aa0aafed44fec19806d8f9ad834be1248a977d478dacaae531f95695750d1e9d03',1,'led.h']]]
+  ['ds3231_5fsensor_0',['DS3231_SENSOR',['../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a3fabae558655a13de5aa06fdb1174c63',1,'main.c']]]
 ];

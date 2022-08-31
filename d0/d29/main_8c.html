@@ -122,7 +122,9 @@ $(document).ready(function(){initNavTree('d0/d29/main_8c.html','../../'); initRe
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
@@ -172,6 +174,11 @@ Include dependency graph for main.c:</div>
 </map>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de8/structdata__t.html">data_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aa085d60d609300a74cbf0b9aed796358"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#aa085d60d609300a74cbf0b9aed796358">MOUNT_POINT</a>&#160;&#160;&#160;&quot;/sdcard&quot;</td></tr>
@@ -200,6 +207,16 @@ Macros</h2></td></tr>
 <tr class="separator:a893b17736ddea1120b2eb4faea51725e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66c86b01c7883a19966c01d28033948b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a66c86b01c7883a19966c01d28033948b">TEN_MINUTE</a>&#160;&#160;&#160;600000000</td></tr>
 <tr class="separator:a66c86b01c7883a19966c01d28033948b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a142810068f1b99cd93d3fc9f0e160e02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a142810068f1b99cd93d3fc9f0e160e02">QUEUE_SIZE</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a142810068f1b99cd93d3fc9f0e160e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aed3dd29f18a867abfa1186d246226443"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443">sensor_event_t</a> { <a class="el" href="../../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a270acb0d6198569a97fe9643031f8aba">NO_SENSOR</a> = -1
+, <a class="el" href="../../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a473230ccd8d7a2d1b6650a6ecce656a2">BMP180_SENSOR</a> = 0
+, <a class="el" href="../../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a3fabae558655a13de5aa06fdb1174c63">DS3231_SENSOR</a> = 1
+ }</td></tr>
+<tr class="separator:aed3dd29f18a867abfa1186d246226443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -213,6 +230,8 @@ Functions</h2></td></tr>
 <tr class="separator:aa8574c932027ef5fe6aed71cdc44c776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98fe7df8cdcce060b245738a4412b7ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a98fe7df8cdcce060b245738a4412b7ce">timerTask</a> (void *pvParameters)</td></tr>
 <tr class="separator:a98fe7df8cdcce060b245738a4412b7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9243835fbbd2816ed8db30635e07da8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#ac9243835fbbd2816ed8db30635e07da8">dataTask</a> (void *pvParameters)</td></tr>
+<tr class="separator:ac9243835fbbd2816ed8db30635e07da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
 <tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -371,6 +390,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a142810068f1b99cd93d3fc9f0e160e02" name="a142810068f1b99cd93d3fc9f0e160e02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a142810068f1b99cd93d3fc9f0e160e02">&#9670;&#160;</a></span>QUEUE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define QUEUE_SIZE&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a66c86b01c7883a19966c01d28033948b" name="a66c86b01c7883a19966c01d28033948b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66c86b01c7883a19966c01d28033948b">&#9670;&#160;</a></span>TEN_MINUTE</h2>
 
@@ -396,6 +429,26 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aed3dd29f18a867abfa1186d246226443" name="aed3dd29f18a867abfa1186d246226443"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed3dd29f18a867abfa1186d246226443">&#9670;&#160;</a></span>sensor_event_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443">sensor_event_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aed3dd29f18a867abfa1186d246226443a270acb0d6198569a97fe9643031f8aba" name="aed3dd29f18a867abfa1186d246226443a270acb0d6198569a97fe9643031f8aba"></a>NO_SENSOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aed3dd29f18a867abfa1186d246226443a473230ccd8d7a2d1b6650a6ecce656a2" name="aed3dd29f18a867abfa1186d246226443a473230ccd8d7a2d1b6650a6ecce656a2"></a>BMP180_SENSOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aed3dd29f18a867abfa1186d246226443a3fabae558655a13de5aa06fdb1174c63" name="aed3dd29f18a867abfa1186d246226443a3fabae558655a13de5aa06fdb1174c63"></a>DS3231_SENSOR&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>
@@ -426,6 +479,24 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void bmp180Task </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvParameters</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9243835fbbd2816ed8db30635e07da8" name="ac9243835fbbd2816ed8db30635e07da8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9243835fbbd2816ed8db30635e07da8">&#9670;&#160;</a></span>dataTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataTask </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>pvParameters</em></td><td>)</td>

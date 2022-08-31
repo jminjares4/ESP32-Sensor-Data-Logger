@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ssd1306_5fcolor_5fblack_0',['SSD1306_COLOR_BLACK',['../db/d85/ssd1306_8h.html#a6382025dc8d68785ea0586eb7199c68ea14693235b193ede93d75935f6c075618',1,'ssd1306.h']]],
-  ['ssd1306_5fcolor_5fwhite_1',['SSD1306_COLOR_WHITE',['../db/d85/ssd1306_8h.html#a6382025dc8d68785ea0586eb7199c68eaf9b048371098d743fc0ea43ca5e6140b',1,'ssd1306.h']]]
+  ['lcd_5factive_0',['LCD_ACTIVE',['../d8/d8e/esp__lcd_8h.html#a0a2fbf6184b7d366bbe9cf6883002438a4fe573318c8e1810bd25ce633845af58',1,'esp_lcd.h']]],
+  ['lcd_5finactive_1',['LCD_INACTIVE',['../d8/d8e/esp__lcd_8h.html#a0a2fbf6184b7d366bbe9cf6883002438abd055fce5b5fa287777eb8d275034523',1,'esp_lcd.h']]]
 ];

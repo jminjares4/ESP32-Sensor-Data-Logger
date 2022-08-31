@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['register_5fselect_5fpin_0',['REGISTER_SELECT_PIN',['../d1/dea/esp__lcd_8c.html#aaefbeda8643d2c9f65a0bc7bd31143b9',1,'esp_lcd.c']]]
+  ['queue_5fsize_0',['QUEUE_SIZE',['../d0/d29/main_8c.html#a142810068f1b99cd93d3fc9f0e160e02',1,'main.c']]]
 ];
