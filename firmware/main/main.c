@@ -421,28 +421,34 @@ void dataTask(void *pvParameters)
 
    while (1)
    {
+      /* Wait for both queues */
       if (xQueueReceive(realTimeClockQueue, &sensor[0], (TickType_t)100) == pdPASS &&
           xQueueReceive(pressureSensorQueue, &sensor[1], (TickType_t)100) == pdPASS)
       {
+         /* Verify that sensor 0 is the DS3231 */
          if (sensor[0].event == DS3231_SENSOR)
          {
+            /* Store data into time */
             time = *(struct tm *)sensor[0].data;
          }
+         /* Verify that sensor 1 is the BMP180 */
          if (sensor[1].event == BMP180_SENSOR)
          {
+            /* Store data into temp & pressure */
             temp = *(float *)sensor[1].data;
             pressure = *(uint32_t*)sensor[1].extraData;
          }
 
+         /* Display time */
          printf("RTC: %04d-%02d-%02d %02d:%02d:%02d\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
                 time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
-
+         /* Display temp & pressure */
          printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
 
       }
       else
       {
-         vTaskDelay(100);
+         vTaskDelay(100); /* avoid WDT */
       }
    }
 }
