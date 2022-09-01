@@ -1,9 +1,10 @@
 <map id="firmware/components" name="firmware/components">
-<area shape="rect" id="node2" href="dir_a31d3740c9eae67d5be3b27efe1036b3.html" title="button" alt="" coords="319,63,377,88"/>
-<area shape="rect" id="node3" href="dir_8e44149bb75a72486c9d6226b083e6a3.html" title="lcd" alt="" coords="257,63,295,88"/>
-<area shape="rect" id="node4" href="dir_58c5705317767dd194f2299c4e2d58f6.html" title="led" alt="" coords="194,63,233,88"/>
-<area shape="rect" id="node5" href="dir_077ab19e2c3d24c2dcbf98e1d5cad677.html" title="oled" alt="" coords="123,63,170,88"/>
-<area shape="rect" id="node6" href="dir_33419e57cc84914009f5f683a7477dc5.html" title="sdcard" alt="" coords="37,63,99,88"/>
-<area shape="rect" id="clust2" href="dir_a7f1045ea2c2de513e4829d3edd7d5b7.html" alt="" coords="27,52,505,99"/>
-<area shape="rect" id="clust1" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html" title="firmware" alt="" coords="16,16,516,109"/>
+<area shape="rect" id="node2" href="dir_5d228dfec6c78e8717e756393bc33fa2.html" title="battery" alt="" coords="401,63,463,88"/>
+<area shape="rect" id="node3" href="dir_a31d3740c9eae67d5be3b27efe1036b3.html" title="button" alt="" coords="319,63,377,88"/>
+<area shape="rect" id="node4" href="dir_8e44149bb75a72486c9d6226b083e6a3.html" title="lcd" alt="" coords="257,63,295,88"/>
+<area shape="rect" id="node5" href="dir_58c5705317767dd194f2299c4e2d58f6.html" title="led" alt="" coords="194,63,233,88"/>
+<area shape="rect" id="node6" href="dir_077ab19e2c3d24c2dcbf98e1d5cad677.html" title="oled" alt="" coords="123,63,170,88"/>
+<area shape="rect" id="node7" href="dir_33419e57cc84914009f5f683a7477dc5.html" title="sdcard" alt="" coords="37,63,99,88"/>
+<area shape="rect" id="clust2" href="dir_a7f1045ea2c2de513e4829d3edd7d5b7.html" alt="" coords="27,52,591,99"/>
+<area shape="rect" id="clust1" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html" title="firmware" alt="" coords="16,16,601,109"/>
 </map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['currentx_0',['CurrentX',['../d2/d3f/struct_s_s_d1306__t.html#a2c40063b7f8a6faf0cb91f191070e87a',1,'SSD1306_t']]],
-  ['currenty_1',['CurrentY',['../d2/d3f/struct_s_s_d1306__t.html#a231012af7d06a1e4395368f8b688e7d3',1,'SSD1306_t']]]
+  ['adc_5fch_0',['adc_ch',['../d7/d4c/structbattery__t.html#a5a0018456d9ffc860da500b7b3d8199e',1,'battery_t']]],
+  ['attenuation_1',['attenuation',['../d7/d4c/structbattery__t.html#a6f5f883b84745d5f4256c4ef88b704eb',1,'battery_t']]]
 ];

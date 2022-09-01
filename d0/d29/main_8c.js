@@ -21,6 +21,7 @@ var main_8c =
       [ "DS3231_SENSOR", "d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a3fabae558655a13de5aa06fdb1174c63", null ]
     ] ],
     [ "app_main", "d0/d29/main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70", null ],
+    [ "batteryTask", "d0/d29/main_8c.html#ab0426a630084f342f93bc1ffc37ac38c", null ],
     [ "bmp180Task", "d0/d29/main_8c.html#a22c2e5a1bab1359e10ca4741275e10fb", null ],
     [ "dataTask", "d0/d29/main_8c.html#ac9243835fbbd2816ed8db30635e07da8", null ],
     [ "lcdTask", "d0/d29/main_8c.html#a398c1a231ab19927257d1ab4b7776678", null ],
