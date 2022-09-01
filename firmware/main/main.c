@@ -9,6 +9,7 @@
 #include "button/button.h"
 #include "lcd/esp_lcd.h"
 #include "led/led.h"
+#include "battery/battery.h"
 
 /* I2C drivers */
 #include "bmp180.h"
@@ -20,6 +21,9 @@
 #include <sys/stat.h>
 #include "esp_vfs_fat.h"
 #include "sdmmc_cmd.h"
+
+/* Battery reading */
+#include "driver/adc.h"
 
 /* ESP-IDF version */
 #include "esp_idf_version.h"
@@ -51,6 +55,7 @@ static const char *TAG = "example";
 /* Notification Handle */
 static TaskHandle_t sensorHandle = NULL;
 static TaskHandle_t rtcHandle = NULL;
+static TaskHandle_t batteryHandle = NULL;
 
 /* Queue */
 typedef enum
@@ -136,17 +141,19 @@ void bmp180Task(void *pvParameters)
       if (res != ESP_OK)
          printf("Could not measure: %d\n", res);
       else
+      {
          /* float is used in printf(). you need non-default configuration in
           * sdkconfig for ESP8266, which is enabled by default for this
           * example. see sdkconfig.defaults.esp8266
           */
-         printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
+         // printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
 
-      bmp180Sensor.data = (void *)&temp;
-      bmp180Sensor.extraData = (void*)&pressure;
+         bmp180Sensor.data = (void *)&temp;
+         bmp180Sensor.extraData = (void *)&pressure;
 
-      /* Send queue data */
-      xQueueSendToBack(pressureSensorQueue, &bmp180Sensor, 0);
+         /* Send queue data */
+         xQueueSendToBack(pressureSensorQueue, &bmp180Sensor, 0);
+      }
 
       vTaskDelay(pdMS_TO_TICKS(500));
    }
@@ -204,8 +211,8 @@ void rtcTask(void *pvParameters)
        * sdkconfig for ESP8266, which is enabled by default for this
        * example. see sdkconfig.defaults.esp8266
        */
-      printf("%04d-%02d-%02d %02d:%02d:%02d, %.2f deg Cel\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
-             time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, temp);
+      // printf("%04d-%02d-%02d %02d:%02d:%02d, %.2f deg Cel\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
+      //        time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, temp);
 
       ds3231Sensor.data = (void *)&time;
 
@@ -398,7 +405,7 @@ void timerTask(void *pvParameters)
    esp_timer_create(&timer_args, &timer_handle);
 
    /* Set period */
-   uint64_t period = HALF_SECOND;
+   uint64_t period = ONE_SECOND;
 
    /* Start periodic timer */
    esp_timer_start_periodic(timer_handle, period);
@@ -436,20 +443,52 @@ void dataTask(void *pvParameters)
          {
             /* Store data into temp & pressure */
             temp = *(float *)sensor[1].data;
-            pressure = *(uint32_t*)sensor[1].extraData;
+            pressure = *(uint32_t *)sensor[1].extraData;
          }
 
          /* Display time */
          printf("RTC: %04d-%02d-%02d %02d:%02d:%02d\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
                 time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
          /* Display temp & pressure */
-         printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
-
+         printf("BMP180: Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
       }
       else
       {
          vTaskDelay(100); /* avoid WDT */
       }
+   }
+}
+
+void batteryTask(void *pvParameters)
+{
+   /* Create an instance of battery object */
+   battery_t battery;
+
+   /* Set battery to default configuration */
+   battery_default(&battery);
+
+   /* Intialize battery */
+   battery_init(&battery);
+
+   /* Disable battery */
+   battery_disable(&battery);
+
+   /* 250 ms delay */
+   vTaskDelay(250 / portTICK_PERIOD_MS);
+
+   /* Enable battery */
+   battery_enable(&battery);
+
+   while (1)
+   {
+      /* Get voltage reading */
+      int value = battery_read(&battery);
+      printf("Value: %d\tBattery: %d\n", value, battery.value);
+
+      uint16_t percentage = battery_percentage(&battery);
+      printf("Percentage: %d\n", percentage);
+
+      vTaskDelay(1000 / portTICK_PERIOD_MS);
    }
 }
 
@@ -473,5 +512,8 @@ void app_main(void)
    xTaskCreate(&timerTask, "ESP Timer Task", 2048, NULL, 10, NULL);
 
    /* Create temp task to display queue data*/
-   xTaskCreate(&dataTask, "Queue Data Task", 1024, NULL, 10, NULL);
+   xTaskCreate(&dataTask, "Queue Data Task", 2048, NULL, 10, NULL);
+
+   /* Create battery reading task */
+   xTaskCreate(&batteryTask, "Battery reading task", 1024, NULL, 10, &batteryHandle);
 }
