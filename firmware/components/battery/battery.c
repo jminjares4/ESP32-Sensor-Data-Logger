@@ -15,7 +15,7 @@
 #define ADC_CHANNEL_DEFAULT ADC1_CHANNEL_7       /*!< ADC channel default */
 #define ADC_WIDTH_DEFAULT ADC_WIDTH_BIT_12       /*!< ADC width default  */
 #define ADC_ATTENUATION_DEFAULT ADC_ATTEN_DB_2_5 /*!< ADC attentuation default */
-#define BATTERY_ENABLE_DEFAULT 26                /*!< Battery gpio default  */
+#define BATTERY_ENABLE_DEFAULT 17                /*!< Battery gpio default  */
 
 /* Voltage divider */
 #define R2 100
