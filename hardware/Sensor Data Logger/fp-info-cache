@@ -1,4 +1,4 @@
-20146984471714911
+20155296086282600
 1A Fuse
 FUSC6125X279N
 2410
@@ -349,6 +349,13 @@ battery CR-3032 coin cell vertical
 0
 2
 2
+Battery Charger
+QFN50P300X300X80-17N-D
+RTE  (S-PWQFN-N16)
+Integrated Circuit
+0
+17
+17
 Bolt
 bolt
 
@@ -57630,6 +57637,13 @@ Yellow 5381 Series LED
 0
 2
 2
+Micro-SD Card
+MEM20510019500A
+MEM2051-00-195-00-A-3
+Connector
+0
+13
+13
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -60192,6 +60206,13 @@ Thermistor
 0
 2
 2
+NTJD1155LT2G
+SOT65P210X110-6N
+SC−88/SC70−6/SOT−363_1
+MOSFET (P-Channel)
+0
+6
+6
 NetTie
 NetTie-2_SMD_Pad0.5mm
 Net tie, 2 pin, 0.5mm square SMD pads
@@ -80149,6 +80170,13 @@ Logo WEEE
 0
 0
 0
+TVS Diode
+TPD1E10B06DPYR
+TPD1E10B06DPYR-2
+TVS Diode (Bi-directional)
+0
+2
+2
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf
@@ -84923,6 +84951,13 @@ igbt diode module
 0
 25
 25
+USB-Type-C
+USB405530A
+USB4055-30-A-5
+Connector
+0
+28
+28
 UTEP
 utep
 
