@@ -29,6 +29,11 @@ var NAVTREE =
       [ "Development", "index.html#autotoc_md1", null ],
       [ "Author", "index.html#autotoc_md2", null ]
     ] ],
+    [ "Hardware", "d1/da4/md_documentation_doc_pages_hardware.html", [
+      [ "Schematic", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md4", null ],
+      [ "Development", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md5", null ],
+      [ "Author", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md6", null ]
+    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -63,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"df/db0/structlcd__t.html#a26160a6755e92b432e480bae30ee3a25"
+"de/dbb/led_8c.html#a87a224762512cf96735b307b3a302bb9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['sd_5fcard_2ec_0',['sd_card.c',['../dd/dd4/sd__card_8c.html',1,'']]],
-  ['sd_5fcard_2eh_1',['sd_card.h',['../d8/d47/sd__card_8h.html',1,'']]],
-  ['ssd1306_2ec_2',['ssd1306.c',['../db/d27/ssd1306_8c.html',1,'']]],
-  ['ssd1306_2eh_3',['ssd1306.h',['../db/d85/ssd1306_8h.html',1,'']]]
+  ['main_2ec_0',['main.c',['../d0/d29/main_8c.html',1,'']]],
+  ['mainpage_2emd_1',['mainpage.md',['../dc/dc6/mainpage_8md.html',1,'']]],
+  ['monitor_2epy_2',['monitor.py',['../d5/d32/monitor_8py.html',1,'']]]
 ];
