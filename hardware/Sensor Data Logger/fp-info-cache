@@ -1,8 +1,15 @@
-20155296086282600
+20158639027295865
 1A Fuse
 FUSC6125X279N
 2410
 Fuse
+0
+2
+2
+1uH Inductor SMD
+INDC3030X200N
+74438336010*-*-
+Inductor
 0
 2
 2
@@ -2421,6 +2428,13 @@ Bridge Rectifier
 0
 4
 4
+CR2032 Battery Holder
+3034
+3034
+Undefined or Miscellaneous
+0
+3
+3
 Calibration_Scale
 Gauge_10mm_Type1_CopperTop
 Gauge, Massstab, 10mm, CopperTop, Type 1,
