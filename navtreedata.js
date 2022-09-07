@@ -34,7 +34,6 @@ var NAVTREE =
       [ "Development", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md5", null ],
       [ "Author", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md6", null ]
     ] ],
-    [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -67,8 +66,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"de/dbb/led_8c.html#a87a224762512cf96735b307b3a302bb9"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

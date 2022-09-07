@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['regsel_0',['regSel',['../df/db0/structlcd__t.html#ac4923b33af337e4a57ca1ddf25b005ba',1,'lcd_t']]]
+  ['width_0',['width',['../d7/d4c/structbattery__t.html#a7bd73251a9caffbb8d263e02fce7b828',1,'battery_t']]]
 ];

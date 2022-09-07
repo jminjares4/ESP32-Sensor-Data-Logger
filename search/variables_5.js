@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gpio_5finstall_5fcount_0',['gpio_install_count',['../d7/dc7/button_8c.html#ae31c467962dd2bc2f7e81d720db15b70',1,'button.c']]]
+  ['pin_0',['pin',['../d7/d01/structbutton__t.html#a1e99f36ffafaff17a56021461ca325ca',1,'button_t::pin()'],['../d0/dbe/structled__t.html#ac9e5f6e409f17ed146f5fbbaccbaa59e',1,'led_t::pin()']]],
+  ['pull_5fsel_1',['pull_sel',['../d7/d01/structbutton__t.html#a1460025aeb2e2e2fc7c36911d3938404',1,'button_t']]]
 ];

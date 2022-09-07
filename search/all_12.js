@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['up_0',['up',['../d7/d01/structbutton__t.html#ab2eb9e8098fd2e8140882c72227be201',1,'button_t']]]
+  ['width_0',['width',['../d7/d4c/structbattery__t.html#a7bd73251a9caffbb8d263e02fce7b828',1,'battery_t']]]
 ];
