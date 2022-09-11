@@ -10,7 +10,7 @@
 </div>
 
 ## **Hardware**
-![video](images/sensor_data_logger_4k.mov)
+![sensor data logger gif](images/sensor_data_logger_3D.gif)
 
 
 
