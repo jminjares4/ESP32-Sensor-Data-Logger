@@ -30,52 +30,20 @@
 /* Timer */
 #include "esp_timer.h"
 
-static const char *TAG = "example";
-
-#define MOUNT_POINT "/sdcard"
-
-// Pin assignments can be set in menuconfig, see "SD SPI Example Configuration" menu.
-// You can also change the pin assignments here by changing the following 4 lines.
-#define PIN_NUM_MISO 19
-#define PIN_NUM_MOSI 23
-#define PIN_NUM_CLK 18
-#define PIN_NUM_CS 13
+/* Custom headers */
+#include "sensor/sensor.h"
+#include "sdcard/sd_card.h"
+#include "timer/timer.h"
 
 #define ONBOARD_LED 2
 
-/* ESP timer period is set by us */
-#define HALF_SECOND 500000
-#define ONE_SECOND 1000000
-#define FIVE_SECOND 5000000
-#define THIRTY_SECOND 30000000
-#define ONE_MINUTE 60000000
-#define FIVE_MINUTE 300000000
-#define TEN_MINUTE 600000000
+QueueHandle_t pressureSensorQueue;
+QueueHandle_t realTimeClockQueue;
 
 /* Notification Handle */
 static TaskHandle_t sensorHandle = NULL;
 static TaskHandle_t rtcHandle = NULL;
 static TaskHandle_t batteryHandle = NULL;
-
-/* Queue */
-typedef enum
-{
-   NO_SENSOR = -1,
-   BMP180_SENSOR = 0,
-   DS3231_SENSOR = 1,
-} sensor_event_t;
-
-typedef struct
-{
-   sensor_event_t event;
-   void *data;
-   void *extraData;
-} data_t;
-
-static QueueHandle_t pressureSensorQueue;
-static QueueHandle_t realTimeClockQueue;
-
-#define QUEUE_SIZE 10
 
 void lcdTask(void *pvParameters)
 {
@@ -148,8 +116,8 @@ void bmp180Task(void *pvParameters)
           */
          // printf("Temperature: %.2f degrees Celsius; Pressure: %" PRIu32 " Pa\n", temp, pressure);
 
-         bmp180Sensor.data = (void *)&temp;
-         bmp180Sensor.extraData = (void *)&pressure;
+         bmp180Sensor.data0 = (void *)&temp;
+         bmp180Sensor.data1 = (void *)&pressure;
 
          /* Send queue data */
          xQueueSendToBack(pressureSensorQueue, &bmp180Sensor, 0);
@@ -162,18 +130,20 @@ void bmp180Task(void *pvParameters)
 void rtcTask(void *pvParameters)
 {
 
+   /* Allocate memory */
    i2c_dev_t dev;
    memset(&dev, 0, sizeof(i2c_dev_t));
 
+   /* Select i2c pins */
    gpio_num_t i2c_sda = 21;
    gpio_num_t i2c_scl = 22;
 
+   /* Initialize device */
    ESP_ERROR_CHECK(ds3231_init_desc(&dev, 0, i2c_sda, i2c_scl));
 
-   // setup datetime: 2016-10-09 13:50:10
    struct tm time = {
        .tm_year = 122, // since 1900 (2016 - 1900)
-       .tm_mon = 14,   // 0-based
+       .tm_mon = 10,   // 0-based
        .tm_mday = 26,
        .tm_hour = 19,
        .tm_min = 7,
@@ -214,7 +184,7 @@ void rtcTask(void *pvParameters)
       // printf("%04d-%02d-%02d %02d:%02d:%02d, %.2f deg Cel\n", time.tm_year + 1900 /*Add 1900 for better readability*/, time.tm_mon + 1,
       //        time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, temp);
 
-      ds3231Sensor.data = (void *)&time;
+      ds3231Sensor.data0 = (void *)&time;
 
       xQueueSendToBack(realTimeClockQueue, &ds3231Sensor, 0);
    }
@@ -237,13 +207,13 @@ void sdcardTask(void *pvParameters)
        .allocation_unit_size = 16 * 1024};
    sdmmc_card_t *card;
    const char mount_point[] = MOUNT_POINT;
-   ESP_LOGI(TAG, "Initializing SD card");
+   ESP_LOGI(SD_CARD_TAG, "Initializing SD card");
 
    // Use settings defined above to initialize SD card and mount FAT filesystem.
    // Note: esp_vfs_fat_sdmmc/sdspi_mount is all-in-one convenience functions.
    // Please check its source code and implement error recovery when developing
    // production applications.
-   ESP_LOGI(TAG, "Using SPI peripheral");
+   ESP_LOGI(SD_CARD_TAG, "Using SPI peripheral");
 
    sdmmc_host_t host = SDSPI_HOST_DEFAULT();
    spi_bus_config_t bus_cfg = {
@@ -261,7 +231,7 @@ void sdcardTask(void *pvParameters)
 #endif
    if (ret != ESP_OK)
    {
-      ESP_LOGE(TAG, "Failed to initialize bus.");
+      ESP_LOGE(SD_CARD_TAG, "Failed to initialize bus.");
       return;
    }
 
@@ -271,25 +241,25 @@ void sdcardTask(void *pvParameters)
    slot_config.gpio_cs = PIN_NUM_CS;
    slot_config.host_id = host.slot;
 
-   ESP_LOGI(TAG, "Mounting filesystem");
+   ESP_LOGI(SD_CARD_TAG, "Mounting filesystem");
    ret = esp_vfs_fat_sdspi_mount(mount_point, &host, &slot_config, &mount_config, &card);
 
    if (ret != ESP_OK)
    {
       if (ret == ESP_FAIL)
       {
-         ESP_LOGE(TAG, "Failed to mount filesystem. "
-                       "If you want the card to be formatted, set the CONFIG_EXAMPLE_FORMAT_IF_MOUNT_FAILED menuconfig option.");
+         ESP_LOGE(SD_CARD_TAG, "Failed to mount filesystem. "
+                               "If you want the card to be formatted, set the CONFIG_EXAMPLE_FORMAT_IF_MOUNT_FAILED menuconfig option.");
       }
       else
       {
-         ESP_LOGE(TAG, "Failed to initialize the card (%s). "
-                       "Make sure SD card lines have pull-up resistors in place.",
+         ESP_LOGE(SD_CARD_TAG, "Failed to initialize the card (%s). "
+                               "Make sure SD card lines have pull-up resistors in place.",
                   esp_err_to_name(ret));
       }
       return;
    }
-   ESP_LOGI(TAG, "Filesystem mounted");
+   ESP_LOGI(SD_CARD_TAG, "Filesystem mounted");
 
    // Card has been initialized, print its properties
    sdmmc_card_print_info(stdout, card);
@@ -299,17 +269,17 @@ void sdcardTask(void *pvParameters)
    // First create a file.
    const char *file_hello = MOUNT_POINT "/test.txt";
 
-   ESP_LOGI(TAG, "Opening file %s", file_hello);
+   ESP_LOGI(SD_CARD_TAG, "Opening file %s", file_hello);
    FILE *f = fopen(file_hello, "w");
    if (f == NULL)
    {
-      ESP_LOGE(TAG, "Failed to open file for writing");
+      ESP_LOGE(SD_CARD_TAG, "Failed to open file for writing");
       return;
    }
    fprintf(f, "Hello %s!\n", card->cid.name);
    printf("Hello  %s!\n", card->cid.name);
    fclose(f);
-   ESP_LOGI(TAG, "File written");
+   ESP_LOGI(SD_CARD_TAG, "File written");
 
    const char *file_foo = MOUNT_POINT "/foo.txt";
 
@@ -322,19 +292,19 @@ void sdcardTask(void *pvParameters)
    }
 
    // Rename original file
-   ESP_LOGI(TAG, "Renaming file %s to %s", file_hello, file_foo);
+   ESP_LOGI(SD_CARD_TAG, "Renaming file %s to %s", file_hello, file_foo);
    if (rename(file_hello, file_foo) != 0)
    {
-      ESP_LOGE(TAG, "Rename failed");
+      ESP_LOGE(SD_CARD_TAG, "Rename failed");
       return;
    }
 
    // Open renamed file for reading
-   ESP_LOGI(TAG, "Reading file %s", file_foo);
+   ESP_LOGI(SD_CARD_TAG, "Reading file %s", file_foo);
    f = fopen(file_foo, "r");
    if (f == NULL)
    {
-      ESP_LOGE(TAG, "Failed to open file for reading");
+      ESP_LOGE(SD_CARD_TAG, "Failed to open file for reading");
       return;
    }
 
@@ -349,12 +319,12 @@ void sdcardTask(void *pvParameters)
    {
       *pos = '\0';
    }
-   ESP_LOGI(TAG, "Read from file: '%s'", line);
+   ESP_LOGI(SD_CARD_TAG, "Read from file: '%s'", line);
    printf("Data: %s\n", line);
 
    // All done, unmount partition and disable SPI peripheral
    esp_vfs_fat_sdcard_unmount(mount_point, card);
-   ESP_LOGI(TAG, "Card unmounted");
+   ESP_LOGI(SD_CARD_TAG, "Card unmounted");
 
    // deinitialize the bus after all devices are removed
    spi_bus_free(host.slot);
@@ -365,7 +335,7 @@ void sdcardTask(void *pvParameters)
    }
 }
 
-static void timer_callback(void *arg)
+void timer_callback(void *arg)
 {
    /* Send message */
    printf("Timer was trigger!!!\n");
@@ -436,14 +406,14 @@ void dataTask(void *pvParameters)
          if (sensor[0].event == DS3231_SENSOR)
          {
             /* Store data into time */
-            time = *(struct tm *)sensor[0].data;
+            time = *(struct tm *)sensor[0].data0;
          }
          /* Verify that sensor 1 is the BMP180 */
          if (sensor[1].event == BMP180_SENSOR)
          {
             /* Store data into temp & pressure */
-            temp = *(float *)sensor[1].data;
-            pressure = *(uint32_t *)sensor[1].extraData;
+            temp = *(float *)sensor[1].data0;
+            pressure = *(uint32_t *)sensor[1].data1;
          }
 
          /* Display time */

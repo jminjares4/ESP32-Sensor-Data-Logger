@@ -1,7 +1,6 @@
 set(component_srcs  "button/button.c"
                     "led/led.c"
                     "lcd/esp_lcd.c" 
-                    "sdcard/sd_card.c"
                     "battery/battery.c"
 )
 
