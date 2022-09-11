@@ -30,15 +30,15 @@ var NAVTREE =
       [ "Development", "index.html#autotoc_md2", null ],
       [ "Author", "index.html#autotoc_md3", null ]
     ] ],
-    [ "Hardware", "d2/d7a/md_docs_doc_pages_hardware.html", [
-      [ "Development", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md5", null ],
-      [ "Features", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md6", null ],
-      [ "Schematic", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md7", null ],
-      [ "Printed Circuit Board", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md8", [
-        [ "Front View", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md9", null ],
-        [ "Back View", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md10", null ]
+    [ "Hardware", "d1/da4/md_documentation_doc_pages_hardware.html", [
+      [ "Development", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md5", null ],
+      [ "Features", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md6", null ],
+      [ "Schematic", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md7", null ],
+      [ "Printed Circuit Board", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md8", [
+        [ "Front View", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md9", null ],
+        [ "Back View", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md10", null ]
       ] ],
-      [ "Author", "d2/d7a/md_docs_doc_pages_hardware.html#autotoc_md11", null ]
+      [ "Author", "d1/da4/md_documentation_doc_pages_hardware.html#autotoc_md11", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
