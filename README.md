@@ -5,11 +5,14 @@
 [![esp-idf build](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/build.yml)
 [![Documentation](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/documentation.yml/badge.svg)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/documentation.yml)
 [![pages-build-deployment](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jminjares4/ESP32-Sensor-Data-Logger/actions/workflows/pages/pages-build-deployment)
+[![GitHub Page](https://img.shields.io/badge/active-34c855.svg?style=flat&logo=github&logoColor=949da5&label=GitHub%20Page&labelColor=3f4851)](https://jminjares4.github.io/ESP32-Sensor-Data-Logger)
 
 </div>
 
 ## **Hardware**
-![front_view](images/sensor_data_logger_3D.gif)
+![video](sensor_data_logger_4k.mov)
+
+
 
 ## **Development**
 |Microcontroller|Software|Enviroment|Operating System|
