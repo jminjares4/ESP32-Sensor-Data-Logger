@@ -154,6 +154,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Ignore backup files
+Sensor Data Logger-backups/
+
 # SDK config
 sdkconfig
 
