@@ -12,7 +12,7 @@ var searchData=
   ['battery_5fread_9',['battery_read',['../da/dc6/battery_8c.html#a1fbaddb51dfc963ef3bc9f749e21497b',1,'battery_read(battery_t *const battery):&#160;battery.c'],['../d6/d69/battery_8h.html#a1fbaddb51dfc963ef3bc9f749e21497b',1,'battery_read(battery_t *const battery):&#160;battery.c']]],
   ['battery_5ft_10',['battery_t',['../d7/d4c/structbattery__t.html',1,'']]],
   ['batterytask_11',['batteryTask',['../d0/d29/main_8c.html#ab0426a630084f342f93bc1ffc37ac38c',1,'main.c']]],
-  ['bmp180_5fsensor_12',['BMP180_SENSOR',['../d0/d29/main_8c.html#aed3dd29f18a867abfa1186d246226443a473230ccd8d7a2d1b6650a6ecce656a2',1,'main.c']]],
+  ['bmp180_5fsensor_12',['BMP180_SENSOR',['../d5/d2e/sensor_8h.html#aed3dd29f18a867abfa1186d246226443a473230ccd8d7a2d1b6650a6ecce656a2',1,'sensor.h']]],
   ['bmp180task_13',['bmp180Task',['../d0/d29/main_8c.html#a22c2e5a1bab1359e10ca4741275e10fb',1,'main.c']]],
   ['button_2ec_14',['button.c',['../d7/dc7/button_8c.html',1,'']]],
   ['button_2eh_15',['button.h',['../d7/d0e/button_8h.html',1,'']]],
