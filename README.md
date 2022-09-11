@@ -8,6 +8,9 @@
 
 </div>
 
+## **Hardware**
+![front_view](images/sensor_data_logger_3D.gif)
+
 ## **Development**
 |Microcontroller|Software|Enviroment|Operating System|
 | :---| :---| :---| :---|
