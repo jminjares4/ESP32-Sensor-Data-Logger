@@ -10,7 +10,7 @@
 </div>
 
 ## Hardware
-![video](sensor_data_logger_4k.mov)
+![video](sensor_data_logger.mov)
 
 
 ## Development
