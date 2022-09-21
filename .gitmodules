@@ -13,3 +13,6 @@
 [submodule "third_party/esp_extras/ESP-SSD1306-Driver"]
 	path = third_party/esp_extras/ESP-SSD1306-Driver
 	url = https://github.com/NaitikSanas/SSD1306-Driver-esp32-with-ESP-IDF
+[submodule "mechanical/PCB-Housing"]
+	path = mechanical/PCB-Housing
+	url = https://github.com/RogelioMarco/PCB-Housing
