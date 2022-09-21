@@ -13,7 +13,7 @@
 ![sensor data logger gif](images/sensor_data_logger_3D.gif)
 
 ## **Mechanical**
-![housing](mechanical/PCB-Housing/images/Housing.gif)
+![housing](/mechanical/PCB-Housing/images/Housing.gif)
 * The housing was developed by [Rogelio Marco](https://github.com/RogelioMarco) :gear:.
 
 ## **Development**
